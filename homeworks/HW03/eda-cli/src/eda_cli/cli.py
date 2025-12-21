@@ -68,6 +68,7 @@ def report(
     encoding: str = typer.Option("utf-8", help="Кодировка файла."),
     max_hist_columns: int = typer.Option(6, help="Максимум числовых колонок для гистограмм."),
     min_missing_share: float = typer.Option(0.1, help="Порог доли пропусков для выделения проблемных колонок."),
+    min_cardinality: int = typer.Option(20, help="Порог количества уникальных значений: колонки с большим числом уникальных значений считаются проблемными в отчёте."),
 ) -> None:
     """
     Сгенерировать полный EDA-отчёт:
@@ -95,6 +96,11 @@ def report(
     missing_stats = df.isnull().mean()
     problematic_cols = [
     col for col, share in missing_stats.items() if share > min_missing_share
+    ]
+    cat_cols = df.select_dtypes(include=["object", "category"]).columns
+    high_card_cols = [
+        col for col in cat_cols
+        if df[col].nunique(dropna=True) >= min_cardinality
     ]
 
     # 3. Сохраняем табличные артефакты
@@ -139,6 +145,14 @@ def report(
             f.write("Пропусков нет или датасет пуст.\n\n")
         else:
             f.write("См. файлы `missing.csv` и `missing_matrix.png`.\n\n")
+
+        f.write("## Высокая кардинальность (в отчёте)\n")
+        f.write(f"- Порог уникальных значений: **{min_cardinality}**\n")
+        if high_card_cols:
+            f.write(f"- Колонки с уникальных значений ≥ {min_cardinality}: {', '.join(high_card_cols)}\n")
+        else:
+            f.write("- Таких колонок не найдено.\n")
+        f.write("\n")
 
         f.write("## Корреляция числовых признаков\n\n")
         if corr_df.empty:
