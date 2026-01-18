@@ -1,0 +1,13 @@
+{
+    "model_name": "RandomForestClassifier",
+    "best_params": {
+        "max_depth": null,
+        "min_samples_leaf": 5
+    },
+    "cv_score": 0.7198117252795565,
+    "test_metrics": {
+        "accuracy": 0.8858333333333334,
+        "f1": 0.745195288282703,
+        "roc_auc": 0.9201331220916908
+    }
+}
