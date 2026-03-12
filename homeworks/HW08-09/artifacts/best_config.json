@@ -1,0 +1,33 @@
+{
+  "experiment_id": "E4",
+  "dataset": "EMNIST",
+  "seed": 42,
+  "model_architecture": {
+    "input_dim": 784,
+    "hidden_dims": [
+      256,
+      128,
+      64
+    ],
+    "num_classes": 47,
+    "activation": "ReLU",
+    "dropout_p": 0.0,
+    "use_batchnorm": true
+  },
+  "training_hyperparameters": {
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "weight_decay": 0,
+    "batch_size": 256,
+    "epochs": 50,
+    "early_stopping": {
+      "patience": 5,
+      "min_delta": 0.0005
+    }
+  },
+  "results": {
+    "best_val_accuracy": 0.8495,
+    "best_val_loss": 0.4545,
+    "epochs_trained": 13
+  }
+}
