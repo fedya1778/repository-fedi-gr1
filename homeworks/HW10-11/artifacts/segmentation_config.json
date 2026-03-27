@@ -1,0 +1,38 @@
+{
+  "task": "segmentation",
+  "model": "DeepLabV3_ResNet50",
+  "pretrained": true,
+  "dataset": "OxfordIIITPet",
+  "foreground_class": 15,
+  "foreground_description": "Pet (animal) vs Background",
+  "modes_tested": [
+    {
+      "name": "V1",
+      "description": "Basic Binarization",
+      "parameters": {
+        "foreground_class": 15
+      }
+    },
+    {
+      "name": "V2",
+      "description": "Component Cleanup",
+      "parameters": {
+        "foreground_class": 15,
+        "min_component_size": 500
+      }
+    }
+  ],
+  "metrics": {
+    "V1": {
+      "mean_iou": 0.0,
+      "pixel_precision": 0.0,
+      "pixel_recall": 0.0
+    },
+    "V2": {
+      "mean_iou": 0.0,
+      "pixel_precision": 0.0,
+      "pixel_recall": 0.0
+    }
+  },
+  "seed": 42
+}

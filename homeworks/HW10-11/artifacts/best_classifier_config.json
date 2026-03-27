@@ -1,0 +1,21 @@
+{
+  "experiment_id": "C4",
+  "dataset": "STL10",
+  "architecture": "ResNet18",
+  "num_classes": 10,
+  "input_size": 224,
+  "transforms": {
+    "train": "ToTensor + Normalize",
+    "val": "ToTensor + Normalize"
+  },
+  "hyperparameters": {
+    "lr": 0.001,
+    "batch_size": 64,
+    "epochs": 10,
+    "optimizer": "Adam"
+  },
+  "seed": 42,
+  "device": "cuda",
+  "best_val_accuracy": 0.957,
+  "test_accuracy": 0.9544
+}

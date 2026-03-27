@@ -1,0 +1,7 @@
+experiment_id,task,dataset,seed,model_summary,optimizer,lr,epochs_trained,best_val_accuracy,test_accuracy,precision,recall,mean_iou,notes
+C1,classification,STL10,42,SimpleCNN,Adam,0.001,10,0.62,,,,,No Aug
+C2,classification,STL10,42,SimpleCNN,Adam,0.001,10,0.454,,,,,With Aug
+C3,classification,STL10,42,ResNet18,Adam,0.001,10,0.944,,,,,"Pretrained, Freeze Backbone"
+C4,classification,STL10,42,ResNet18,Adam,0.001,10,0.957,0.9544,,,,"Pretrained, Fine-tune Layer4+FC"
+V1,segmentation,OxfordIIITPet,42,DeepLabV3_ResNet50 (pretrained),N/A (inference only),N/A,0,N/A,N/A,0.0,0.0,0.0,postprocessing=Basic Binarization
+V2,segmentation,OxfordIIITPet,42,DeepLabV3_ResNet50 (pretrained),N/A (inference only),N/A,0,N/A,N/A,0.0,0.0,0.0,postprocessing=Component Cleanup
