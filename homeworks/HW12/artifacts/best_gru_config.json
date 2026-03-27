@@ -1,0 +1,14 @@
+{
+  "input_size": 1,
+  "hidden_size": 64,
+  "num_layers": 2,
+  "dropout": 0.2,
+  "window_size": 14,
+  "horizon": 1,
+  "batch_size": 32,
+  "learning_rate": 0.001,
+  "seed": 42,
+  "epochs_trained": 37,
+  "scaler_type": "StandardScaler",
+  "device": "cuda"
+}
