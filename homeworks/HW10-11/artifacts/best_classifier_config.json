@@ -2,17 +2,23 @@
   "experiment_id": "C4",
   "dataset": "STL10",
   "architecture": "ResNet18",
+  "pretrained": true,
+  "pretrained_weights": "ResNet18_Weights.IMAGENET1K_V1",
+  "frozen_layers": "none (layer4 and fc unfrozen for fine-tuning)",
   "num_classes": 10,
   "input_size": 224,
   "transforms": {
-    "train": "ToTensor + Normalize",
-    "val": "ToTensor + Normalize"
+    "train": "Resize(224) + ToTensor + Normalize(ImageNet stats)",
+    "val": "Resize(224) + ToTensor + Normalize(ImageNet stats)"
   },
   "hyperparameters": {
-    "lr": 0.001,
+    "lr_layer4": 0.0001,
+    "lr_fc": 0.001,
+    "weight_decay": 0.0001,
     "batch_size": 64,
     "epochs": 10,
-    "optimizer": "Adam"
+    "optimizer": "Adam",
+    "loss": "CrossEntropyLoss"
   },
   "seed": 42,
   "device": "cuda",
