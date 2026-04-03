@@ -1,27 +1,75 @@
 {
-  "experiment_id": "C4",
   "dataset": "STL10",
-  "architecture": "ResNet18",
-  "pretrained": true,
-  "pretrained_weights": "ResNet18_Weights.IMAGENET1K_V1",
-  "frozen_layers": "none (layer4 and fc unfrozen for fine-tuning)",
-  "num_classes": 10,
-  "input_size": 224,
-  "transforms": {
-    "train": "Resize(224) + ToTensor + Normalize(ImageNet stats)",
-    "val": "Resize(224) + ToTensor + Normalize(ImageNet stats)"
-  },
-  "hyperparameters": {
-    "lr_layer4": 0.0001,
-    "lr_fc": 0.001,
-    "weight_decay": 0.0001,
-    "batch_size": 64,
-    "epochs": 10,
-    "optimizer": "Adam",
-    "loss": "CrossEntropyLoss"
-  },
   "seed": 42,
-  "device": "cuda",
+  "fast_mode": false,
+  "model_type": "ResNet18_pretrained",
+  "model_summary": "Pretrained ResNet18 with fine-tuning of layer4 and fc",
+  "num_classes": 10,
+  "pretrained": true,
+  "trainable_layers": [
+    "layer4",
+    "fc"
+  ],
+  "frozen_layers": [
+    "conv1",
+    "bn1",
+    "layer1",
+    "layer2",
+    "layer3"
+  ],
+  "transforms_train": {
+    "name": "train_tf_resnet",
+    "resize_size": 256,
+    "crop_size": 224,
+    "scale": [
+      0.8,
+      1.0
+    ],
+    "horizontal_flip_prob": 0.5,
+    "normalize_mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "normalize_std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "transforms_eval": {
+    "name": "eval_tf_resnet",
+    "resize_size": 224,
+    "crop_size": 224,
+    "normalize_mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "normalize_std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "optimizer": "Adam",
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "optimizer_params": {
+    "layer4": {
+      "lr": 0.0001,
+      "weight_decay": 0.0001
+    },
+    "fc": {
+      "lr": 0.001,
+      "weight_decay": 0.0001
+    }
+  },
+  "criterion": "CrossEntropyLoss",
+  "epochs_trained": 10,
+  "batch_size": 64,
   "best_val_accuracy": 0.957,
-  "test_accuracy": 0.9544
+  "test_accuracy": 0.9544,
+  "notes": "ResNet18 with pretrained weights IMAGENET1K_V1, fine-tuning layer4 and fc on STL10",
+  "date": "2026-04-03"
 }
