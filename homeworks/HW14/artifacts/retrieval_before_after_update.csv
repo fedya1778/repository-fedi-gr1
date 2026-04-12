@@ -1,0 +1,11 @@
+query_id,query,before_retrieved_sources,after_retrieved_sources,changed
+q1,Чем отличается обучение с учителем от обучения без учителя?,"doc_02, doc_11, doc_12","doc_02, doc_11, doc_12",False
+q2,Как бороться с переобучением модели?,"doc_04, doc_11, doc_12","doc_04, doc_11, doc_12",False
+q3,Какие метрики используют для оценки классификации?,"doc_02, doc_03, doc_05","doc_02, doc_03, doc_05",False
+q4,Зачем нужны тестовая и валидационная выборки?,"doc_05, doc_06, doc_04","doc_05, doc_06, doc_04",False
+q5,Какие архитектуры нейросетей используются в NLP?,"doc_08, doc_07, doc_03","doc_08, doc_07, doc_03",False
+q6,Что включает в себя практика MLOps?,"doc_10, doc_08, doc_09","doc_10, doc_08, doc_09",False
+q7,Как аугментация данных влияет на обучение?,"doc_05, doc_12, doc_11","doc_05, doc_12, doc_11",False
+q8,В чём суть переноса обучения?,"doc_12, doc_11, doc_04","doc_12, doc_11, doc_04",False
+q9,Как работают GAN и из каких компонентов состоят?,"doc_10, doc_08, doc_03","doc_13, doc_10, doc_08",True
+q10,Что такое агент и награда в RL?,"doc_12, doc_09, doc_08","doc_14, doc_13, doc_12",True
