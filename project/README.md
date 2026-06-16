@@ -4,7 +4,7 @@
 - **Название проекта:** `<Buy Now Pay Later Risk Scoring Service>`
 - **Автор:** `<Рыбаков Фёдор Владимирович>`
 - **Группа:** `<РИБО-02-24>`
-- **Контакт:** `<telegram: @xrlynt>`
+- **Контакт:** `<@xrlynt>`
 
 - **Краткое описание (2-4 предложения):**  
   
@@ -24,9 +24,10 @@
 - `notebooks/` – экспериментальные ноутбуки:
   - EDA, прототипы моделей, отдельные эксперименты.
 - `src/` – основной код проекта:
-  - модули для работы с данными;
-  - обучение моделей;
-  - запуск сервиса/скриптов.
+  - `src/data` модули для работы с данными;
+  - `src/models` обучение моделей;
+  - `src/features` препроцессинг;
+  - `src/service` запуск сервиса/скриптов.
 - `data/` – демонстрационные/учебные данные:
   - **только открытые, синтетические или обезличенные данные;**
   - при необходимости – небольшие выборки для быстрого запуска.
@@ -41,13 +42,11 @@
 
 ### 3.1. Требования
 
-- Python `>= 3.10` (уточните при необходимости).
+- Python `>= 3.10` 
 - Основные пакеты: fastapi==0.110.0, uvicorn==0.28.0, pandas==2.2.1, scikit-learn==1.4.1.post1, lightgbm==4.3.0, numpy>=1.24.0, joblib>=1.3.0, pydantic, shap, matplotlib, seaborn. Тесты требуют pytest и httpx. (Все перечислены в requirements.txt.)
 - Системные зависимости: возможны нативные зависимости/компиляторы для lightgbm (например, build tools / C compiler) — установите system build tools при ошибках установки бинарных колёс.
 
 ### 3.2. Установка окружения
-
-Примерный сценарий (можно адаптировать под ваш проект):
 
 ```bash
 # Перейти в папку проекта
@@ -67,8 +66,6 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Если у проекта есть какие-то особенности установки (дополнительные шаги, внешние сервисы и т.п.), опишите их здесь.
-
 ---
 
 ## 4. Как запустить проект
@@ -76,7 +73,7 @@ pip install -r requirements.txt
 ### 4.1. Запуск обучения модели
 
 ```bash
-cd BNLP-Risk-Scoring-Service
+cd project
  
 source .venv/bin/activate
 python src/data/prepare_data.py
@@ -88,7 +85,7 @@ python src/models/trainer.py
 ### 4.2. Запуск сервиса (API/веб-интерфейс)
 
 ```bash
-cd BNPL-Risk-Scoring-Service
+cd project
 source .venv/bin/activate      # если используется виртуальное окружение
 uvicorn src.service.api:app --reload --host 127.0.0.1 --port 8000
 ```
@@ -153,7 +150,7 @@ python src/data/prepare_data.py
 - test_api.py — интеграционные/сервисные тесты для API: GET / и GET /health.
 Пример:
 ```bash
-cd BNLP-Risk-Scoring-Service
+cd project
 source .venv/bin/activate
 python -m pytest -q tests
 ```
