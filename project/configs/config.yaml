@@ -1,0 +1,34 @@
+app:
+  host: 127.0.0.1
+  port: 8000
+  log_level: INFO
+paths:
+  raw_data: data/bnpl_dataset_v2.csv
+  train_data: data/cleaned_bnpl_data.csv
+  model: artifacts/models/production_model.pkl
+model:
+  type: lightgbm
+  target_column: Target
+  categorical_columns:
+    - Gender
+    - Purchase_Category
+    - BNPL_Provider
+    - Device_Type
+    - Connection_Type
+    - Browser
+training:
+  n_estimators: 100
+  learning_rate: 0.1
+  random_state: 42
+  test_size: 0.2
+inference:
+  low_risk_threshold: 0.10
+  high_risk_threshold: 0.30
+  calibration:
+    A: 712.86
+    B: 28.85
+  hard_rules:
+    min_age: 18
+    max_age: 100
+    min_income: 0
+    min_credit_score: 0

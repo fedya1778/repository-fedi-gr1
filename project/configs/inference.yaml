@@ -1,0 +1,19 @@
+model_path: artifacts/models/production_model.pkl
+categorical_columns:
+  - Gender
+  - Purchase_Category
+  - BNPL_Provider
+  - Device_Type
+  - Connection_Type
+  - Browser
+hard_rules:
+  min_age: 18
+  max_age: 100
+  min_income: 0
+  min_credit_score: 0
+score_calibration:
+  A: 712.86
+  B: 28.85
+risk_thresholds:
+  low: 0.10
+  high: 0.30

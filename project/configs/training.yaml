@@ -1,0 +1,18 @@
+data_path: data/cleaned_bnpl_data.csv
+save_path: artifacts/models/production_model.pkl
+target_column: Target
+categorical_columns:
+  - Gender
+  - Purchase_Category
+  - BNPL_Provider
+  - Device_Type
+  - Connection_Type
+  - Browser
+model_params:
+  n_estimators: 100
+  learning_rate: 0.1
+  random_state: 42
+  objective: binary
+  metric:
+    - binary_logloss
+    - auc
